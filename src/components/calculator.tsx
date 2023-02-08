@@ -1,4 +1,4 @@
-interface CalculatorProps {
+export interface CalculatorProps {
   calculator: boolean;
   onChangeCalculator: (e: React.ChangeEvent<HTMLSelectElement>) => void;
 }
