@@ -1,4 +1,4 @@
-interface ShowFormInfoProps {
+export interface ShowFormInfoProps {
   speciesName: string;
   planetName: string;
   numberBeings: number;
