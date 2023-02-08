@@ -1,4 +1,4 @@
-interface ReasonProps {
+export interface ReasonProps {
   reason: string;
   onChangeReason: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
 }
