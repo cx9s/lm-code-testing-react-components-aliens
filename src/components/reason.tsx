@@ -6,7 +6,12 @@ export interface ReasonProps {
 const Reason: React.FC<ReasonProps> = ({ reason, onChangeReason }) => (
   <div>
     <label htmlFor="reason">Reason for sparing:</label>
-    <textarea id="reason" value={reason} onChange={onChangeReason}></textarea>
+    <textarea
+      id="reason"
+      placeholder="reasons"
+      value={reason}
+      onChange={onChangeReason}
+    ></textarea>
   </div>
 );
 

@@ -12,6 +12,7 @@ const PlanetName: React.FC<PlanetNameProps> = ({
     <input
       id="planetName"
       type="text"
+      placeholder="planet"
       value={planetName}
       onChange={onChangePlanetName}
     />

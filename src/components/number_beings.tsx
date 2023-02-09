@@ -12,6 +12,7 @@ const NumberBeings: React.FC<NumberBeingsProps> = ({
     <input
       id="numberBeings"
       type="text"
+      placeholder="number"
       value={numberBeings}
       onChange={onChangeNumberBeings}
     />
