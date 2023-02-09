@@ -14,6 +14,12 @@ const SpeciesName: React.FC<SpeciesNameProps> = ({
     undefined
   );
 
+  const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const message = validate(e.target.value);
+    setErrorMessage(message);
+    onChangeSpeciesName(e);
+  };
+
   const validate: (value: string) => string | undefined = (value) => {
     const message = /^[a-zA-Z]{3,23}$/.test(value)
       ? undefined
@@ -29,11 +35,7 @@ const SpeciesName: React.FC<SpeciesNameProps> = ({
         type="text"
         placeholder="species"
         value={speciesName}
-        onChange={(e) => {
-          const message = validate(e.target.value);
-          setErrorMessage(message);
-          onChangeSpeciesName(e);
-        }}
+        onChange={onChangeHandler}
       />
       <ErrorMessage errorMessage={errorMessage} />
     </div>
