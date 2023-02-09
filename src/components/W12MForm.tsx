@@ -8,11 +8,11 @@ import Reason from "./reason";
 import ShowFormInfo from "./show_form_info";
 
 const W12MForm = () => {
-  const [speciesName, setSpeciesName] = useState<string>("humans");
-  const [planetName, setPlanetName] = useState<string>("Earth");
+  const [speciesName, setSpeciesName] = useState<string>("");
+  const [planetName, setPlanetName] = useState<string>("");
   const [numberBeings, setNumberBeings] = useState<number>(0);
   const [calculator, setCalculator] = useState<boolean>(true);
-  const [reason, setReason] = useState<string>("reason");
+  const [reason, setReason] = useState<string>("");
   const [submitted, setSubmitted] = useState<boolean>(false);
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
