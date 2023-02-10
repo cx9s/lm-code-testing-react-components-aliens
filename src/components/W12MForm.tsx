@@ -84,11 +84,14 @@ const W12MForm = () => {
             setReason(e.target.value);
           }}
         />
-        {!Object.values(validations).includes(false) && (
-          <div>
-            <input type="submit" value="Submit" />
-          </div>
-        )}
+
+        <div>
+          <input
+            disabled={Object.values(validations).includes(false)}
+            type="submit"
+            value="Submit"
+          />
+        </div>
       </form>
       {submitted && (
         <ShowFormInfo
