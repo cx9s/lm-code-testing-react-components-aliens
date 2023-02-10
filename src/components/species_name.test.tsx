@@ -23,3 +23,13 @@ test("Given the required props, When the value of input changed, Then the functi
   await user.type(input, "human");
   expect(props.onChangeSpeciesName).toHaveBeenCalledTimes(5);
 });
+
+test("Given the required props, When the value of input is invalid, Then the error message should be present", async () => {
+  render(<SpeciesName {...props} />);
+  const input = screen.getByDisplayValue(props.speciesName);
+  await user.type(input, "human33");
+  const errorMessage = screen.getByText(
+    /Must be between 3 and 23 characters./i
+  );
+  expect(errorMessage).toBeInTheDocument();
+});

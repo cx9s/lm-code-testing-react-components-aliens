@@ -23,3 +23,13 @@ test("Given the required props, When the value of input changed, Then the functi
   await user.type(input, "earth");
   expect(props.onChangePlanetName).toHaveBeenCalledTimes(5);
 });
+
+test("Given the required props, When the value of input is invalid, Then the error message should be present", async () => {
+  render(<PlanetName {...props} />);
+  const input = screen.getByDisplayValue(props.planetName);
+  await user.type(input, "human%%");
+  const errorMessage = screen.getByText(
+    /Must be between 2 and 49 characters./i
+  );
+  expect(errorMessage).toBeInTheDocument();
+});
