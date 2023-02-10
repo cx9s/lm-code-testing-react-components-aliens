@@ -4,7 +4,10 @@ import ErrorMessage from "./error_message";
 
 export interface NumberBeingsProps {
   numberBeings: number;
-  onChangeNumberBeings: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onChangeNumberBeings: (
+    validated: boolean,
+    e: React.ChangeEvent<HTMLInputElement>
+  ) => void;
 }
 
 const NumberBeings: React.FC<NumberBeingsProps> = ({
@@ -16,17 +19,15 @@ const NumberBeings: React.FC<NumberBeingsProps> = ({
   );
 
   const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const message = validate(e.target.value);
-    setErrorMessage(message);
-    onChangeNumberBeings(e);
+    const validated = validate(e.target.value);
+    setErrorMessage(
+      validated ? undefined : "Numbers ONLY. Must be at least 1,000,000,000."
+    );
+    onChangeNumberBeings(validated, e);
   };
 
-  const validate: (value: string) => string | undefined = (value) => {
-    const message =
-      Number.isInteger(+value) && +value >= 10 ** 9
-        ? undefined
-        : "Numbers ONLY. Must be at least 1,000,000,000.";
-    return message;
+  const validate: (value: string) => boolean = (value) => {
+    return Number.isInteger(+value) && +value >= 10 ** 9;
   };
 
   return (
