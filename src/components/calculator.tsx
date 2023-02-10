@@ -3,7 +3,10 @@ import ErrorMessage from "./error_message";
 
 export interface CalculatorProps {
   calculator: boolean;
-  onChangeCalculator: (e: React.ChangeEvent<HTMLSelectElement>) => void;
+  onChangeCalculator: (
+    validated: boolean,
+    e: React.ChangeEvent<HTMLSelectElement>
+  ) => void;
 }
 
 const Calculator: React.FC<CalculatorProps> = ({
@@ -15,14 +18,13 @@ const Calculator: React.FC<CalculatorProps> = ({
   );
 
   const onChangeHandler = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const message = validate(e.target.value);
-    setErrorMessage(message);
-    onChangeCalculator(e);
+    const validated = validate(e.target.value);
+    setErrorMessage(validated ? undefined : '"4" must be selected.');
+    onChangeCalculator(validated, e);
   };
 
-  const validate: (value: string) => string | undefined = (value) => {
-    const message = value === "true" ? undefined : '"4" must be selected.';
-    return message;
+  const validate: (value: string) => boolean = (value) => {
+    return value === "true";
   };
 
   return (
