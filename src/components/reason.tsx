@@ -3,7 +3,10 @@ import ErrorMessage from "./error_message";
 
 export interface ReasonProps {
   reason: string;
-  onChangeReason: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
+  onChangeReason: (
+    validated: boolean,
+    e: React.ChangeEvent<HTMLTextAreaElement>
+  ) => void;
 }
 
 const Reason: React.FC<ReasonProps> = ({ reason, onChangeReason }) => {
@@ -12,17 +15,15 @@ const Reason: React.FC<ReasonProps> = ({ reason, onChangeReason }) => {
   );
 
   const onChangeHandler = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    const message = validate(e.target.value);
-    setErrorMessage(message);
-    onChangeReason(e);
+    const validated = validate(e.target.value);
+    setErrorMessage(
+      validated ? undefined : "Must be between 17 and 153 characters."
+    );
+    onChangeReason(validated, e);
   };
 
-  const validate: (value: string) => string | undefined = (value) => {
-    const message =
-      value.length >= 17 && value.length <= 153
-        ? undefined
-        : "Must be between 17 and 153 characters.";
-    return message;
+  const validate: (value: string) => boolean = (value) => {
+    return value.length >= 17 && value.length <= 153;
   };
 
   return (
