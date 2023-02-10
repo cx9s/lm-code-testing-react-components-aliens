@@ -13,7 +13,7 @@ const ShowFormInfo: React.FC<ShowFormInfoProps> = ({
   calculator,
   reason,
 }) => (
-  <div>
+  <div className="showFormInfo">
     <p>Species Name: {speciesName}</p>
     <p>Planet Name: {planetName}</p>
     <p>Number of beings: {numberBeings}</p>
