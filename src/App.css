@@ -14,3 +14,8 @@ body {
 .error {
   color: red;
 }
+
+.showFormInfo {
+  margin-top: 10px;
+  border: 5px solid blue;
+}
