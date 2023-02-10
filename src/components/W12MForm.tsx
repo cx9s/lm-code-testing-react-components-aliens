@@ -44,6 +44,7 @@ const W12MForm = () => {
           onChangeSpeciesName={(validated, e: any) => {
             validations.speciesName = validated;
             setValidations(validations);
+            setSubmitted(false);
             setSpeciesName(e.target.value);
           }}
         />
@@ -52,6 +53,7 @@ const W12MForm = () => {
           onChangePlanetName={(validated, e: any) => {
             validations.planetName = validated;
             setValidations(validations);
+            setSubmitted(false);
             setPlanetName(e.target.value);
           }}
         />
@@ -60,6 +62,7 @@ const W12MForm = () => {
           onChangeNumberBeings={(validated, e: any) => {
             validations.numberBeings = validated;
             setValidations(validations);
+            setSubmitted(false);
             setNumberBeings(e.target.value);
           }}
         />
@@ -68,6 +71,7 @@ const W12MForm = () => {
           onChangeCalculator={(validated, e: any) => {
             validations.calculator = validated;
             setValidations(validations);
+            setSubmitted(false);
             setCalculator(e.target.value === "true" ? true : false);
           }}
         />
@@ -76,12 +80,15 @@ const W12MForm = () => {
           onChangeReason={(validated, e: any) => {
             validations.reason = validated;
             setValidations(validations);
+            setSubmitted(false);
             setReason(e.target.value);
           }}
         />
-        <div>
-          <input type="submit" value="Submit" />
-        </div>
+        {!Object.values(validations).includes(false) && (
+          <div>
+            <input type="submit" value="Submit" />
+          </div>
+        )}
       </form>
       {submitted && (
         <ShowFormInfo
