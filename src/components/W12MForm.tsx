@@ -7,6 +7,14 @@ import Calculator from "./calculator";
 import Reason from "./reason";
 import ShowFormInfo from "./show_form_info";
 
+interface validationsType {
+  speciesName: boolean;
+  planetName: boolean;
+  numberBeings: boolean;
+  calculator: boolean;
+  reason: boolean;
+}
+
 const W12MForm = () => {
   const [speciesName, setSpeciesName] = useState<string>("");
   const [planetName, setPlanetName] = useState<string>("");
@@ -14,6 +22,13 @@ const W12MForm = () => {
   const [calculator, setCalculator] = useState<boolean>(true);
   const [reason, setReason] = useState<string>("");
   const [submitted, setSubmitted] = useState<boolean>(false);
+  const [validations, setValidations] = useState<validationsType>({
+    speciesName: false,
+    planetName: false,
+    numberBeings: false,
+    calculator: false,
+    reason: false,
+  });
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -26,8 +41,9 @@ const W12MForm = () => {
       <form onSubmit={onSubmit}>
         <SpeciesName
           speciesName={speciesName}
-          onChangeSpeciesName={(e: any) => {
-            setSubmitted(false);
+          onChangeSpeciesName={(validated, e: any) => {
+            validations.speciesName = validated;
+            setValidations(validations);
             setSpeciesName(e.target.value);
           }}
         />
