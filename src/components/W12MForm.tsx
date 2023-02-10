@@ -26,7 +26,7 @@ const W12MForm = () => {
     speciesName: false,
     planetName: false,
     numberBeings: false,
-    calculator: false,
+    calculator: true,
     reason: false,
   });
 
@@ -49,29 +49,33 @@ const W12MForm = () => {
         />
         <PlanetName
           planetName={planetName}
-          onChangePlanetName={(e: any) => {
-            setSubmitted(false);
+          onChangePlanetName={(validated, e: any) => {
+            validations.planetName = validated;
+            setValidations(validations);
             setPlanetName(e.target.value);
           }}
         />
         <NumberBeings
           numberBeings={numberBeings}
-          onChangeNumberBeings={(e: any) => {
-            setSubmitted(false);
+          onChangeNumberBeings={(validated, e: any) => {
+            validations.numberBeings = validated;
+            setValidations(validations);
             setNumberBeings(e.target.value);
           }}
         />
         <Calculator
           calculator={calculator}
-          onChangeCalculator={(e: any) => {
-            setSubmitted(false);
+          onChangeCalculator={(validated, e: any) => {
+            validations.calculator = validated;
+            setValidations(validations);
             setCalculator(e.target.value === "true" ? true : false);
           }}
         />
         <Reason
           reason={reason}
-          onChangeReason={(e: any) => {
-            setSubmitted(false);
+          onChangeReason={(validated, e: any) => {
+            validations.reason = validated;
+            setValidations(validations);
             setReason(e.target.value);
           }}
         />
