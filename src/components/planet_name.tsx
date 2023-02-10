@@ -3,10 +3,7 @@ import ErrorMessage from "./error_message";
 import { validPlanetName } from "./validations";
 export interface PlanetNameProps {
   planetName: string;
-  onChangePlanetName: (
-    validated: boolean,
-    e: React.ChangeEvent<HTMLInputElement>
-  ) => void;
+  onChangePlanetName: (validated: boolean, value: string) => void;
 }
 
 const PlanetName: React.FC<PlanetNameProps> = ({
@@ -20,7 +17,7 @@ const PlanetName: React.FC<PlanetNameProps> = ({
   const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     const valid = validPlanetName(e.target.value);
     setErrorMessage(valid.message);
-    onChangePlanetName(valid.validated, e);
+    onChangePlanetName(valid.validated, e.target.value);
   };
 
   return (

@@ -4,10 +4,7 @@ import { validNumberBeings } from "./validations";
 
 export interface NumberBeingsProps {
   numberBeings: number;
-  onChangeNumberBeings: (
-    validated: boolean,
-    e: React.ChangeEvent<HTMLInputElement>
-  ) => void;
+  onChangeNumberBeings: (validated: boolean, value: number) => void;
 }
 
 const NumberBeings: React.FC<NumberBeingsProps> = ({
@@ -21,7 +18,7 @@ const NumberBeings: React.FC<NumberBeingsProps> = ({
   const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     const valid = validNumberBeings(e.target.value);
     setErrorMessage(valid.message);
-    onChangeNumberBeings(valid.validated, e);
+    onChangeNumberBeings(valid.validated, +e.target.value);
   };
 
   return (

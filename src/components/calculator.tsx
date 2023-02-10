@@ -4,10 +4,7 @@ import { validCalculator } from "./validations";
 
 export interface CalculatorProps {
   calculator: boolean;
-  onChangeCalculator: (
-    validated: boolean,
-    e: React.ChangeEvent<HTMLSelectElement>
-  ) => void;
+  onChangeCalculator: (validated: boolean, value: boolean) => void;
 }
 
 const Calculator: React.FC<CalculatorProps> = ({
@@ -21,7 +18,7 @@ const Calculator: React.FC<CalculatorProps> = ({
   const onChangeHandler = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const valid = validCalculator(e.target.value);
     setErrorMessage(valid.message);
-    onChangeCalculator(valid.validated, e);
+    onChangeCalculator(valid.validated, valid.validated);
   };
 
   return (

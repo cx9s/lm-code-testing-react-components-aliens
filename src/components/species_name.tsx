@@ -4,10 +4,7 @@ import { validSpeciesName } from "./validations";
 
 export interface SpeciesNameProps {
   speciesName: string;
-  onChangeSpeciesName: (
-    validated: boolean,
-    e: React.ChangeEvent<HTMLInputElement>
-  ) => void;
+  onChangeSpeciesName: (validated: boolean, value: string) => void;
 }
 
 const SpeciesName: React.FC<SpeciesNameProps> = ({
@@ -21,7 +18,7 @@ const SpeciesName: React.FC<SpeciesNameProps> = ({
   const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     const valid = validSpeciesName(e.target.value);
     setErrorMessage(valid.message);
-    onChangeSpeciesName(valid.validated, e);
+    onChangeSpeciesName(valid.validated, e.target.value);
   };
 
   return (

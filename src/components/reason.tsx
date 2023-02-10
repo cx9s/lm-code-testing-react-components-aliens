@@ -4,10 +4,7 @@ import { validReason } from "./validations";
 
 export interface ReasonProps {
   reason: string;
-  onChangeReason: (
-    validated: boolean,
-    e: React.ChangeEvent<HTMLTextAreaElement>
-  ) => void;
+  onChangeReason: (validated: boolean, value: string) => void;
 }
 
 const Reason: React.FC<ReasonProps> = ({ reason, onChangeReason }) => {
@@ -18,7 +15,7 @@ const Reason: React.FC<ReasonProps> = ({ reason, onChangeReason }) => {
   const onChangeHandler = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     const valid = validReason(e.target.value);
     setErrorMessage(valid.message);
-    onChangeReason(valid.validated, e);
+    onChangeReason(valid.validated, e.target.value);
   };
 
   return (

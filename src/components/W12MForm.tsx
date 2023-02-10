@@ -41,47 +41,47 @@ const W12MForm = () => {
       <form onSubmit={onSubmit}>
         <SpeciesName
           speciesName={speciesName}
-          onChangeSpeciesName={(validated, e: any) => {
+          onChangeSpeciesName={(validated, value: string) => {
             validations.speciesName = validated;
             setValidations(validations);
             setSubmitted(false);
-            setSpeciesName(e.target.value);
+            setSpeciesName(value);
           }}
         />
         <PlanetName
           planetName={planetName}
-          onChangePlanetName={(validated, e: any) => {
+          onChangePlanetName={(validated, value: string) => {
             validations.planetName = validated;
             setValidations(validations);
             setSubmitted(false);
-            setPlanetName(e.target.value);
+            setPlanetName(value);
           }}
         />
         <NumberBeings
           numberBeings={numberBeings}
-          onChangeNumberBeings={(validated, e: any) => {
+          onChangeNumberBeings={(validated, value: number) => {
             validations.numberBeings = validated;
             setValidations(validations);
             setSubmitted(false);
-            setNumberBeings(e.target.value);
+            setNumberBeings(value);
           }}
         />
         <Calculator
           calculator={calculator}
-          onChangeCalculator={(validated, e: any) => {
+          onChangeCalculator={(validated, value: boolean) => {
             validations.calculator = validated;
             setValidations(validations);
             setSubmitted(false);
-            setCalculator(e.target.value === "true" ? true : false);
+            setCalculator(value);
           }}
         />
         <Reason
           reason={reason}
-          onChangeReason={(validated, e: any) => {
+          onChangeReason={(validated, value: string) => {
             validations.reason = validated;
             setValidations(validations);
             setSubmitted(false);
-            setReason(e.target.value);
+            setReason(value);
           }}
         />
 
