@@ -33,3 +33,12 @@ test("Given the required props, When the value of input is invalid, Then the err
   );
   expect(errorMessage).toBeInTheDocument();
 });
+
+test("Given the required props, When the value of input is valid, Then the error message should not be present", async () => {
+  render(<SpeciesName {...props} />);
+  const input = screen.getByDisplayValue(props.speciesName);
+  await user.type(input, "human");
+  expect(
+    screen.queryByText(/Must be between 3 and 23 characters./i)
+  ).not.toBeInTheDocument();
+});
