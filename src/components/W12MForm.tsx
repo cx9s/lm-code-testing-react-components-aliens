@@ -59,7 +59,7 @@ const W12MForm = () => {
         />
         <NumberBeings
           numberBeings={numberBeings}
-          onChangeNumberBeings={(validated, value: number) => {
+          onChangeNumberBeings={(validated, value: any) => {
             validations.numberBeings = validated;
             setValidations(validations);
             setSubmitted(false);
